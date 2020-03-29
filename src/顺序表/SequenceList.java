@@ -14,14 +14,14 @@ public class SequenceList implements SList {
         sequenceList.insert(1,2);
         sequenceList.insert(2,3);
         sequenceList.insert(3,4);
-//        sequenceList.insert(4,5);
-        sequenceList.insert(2,8);
+        sequenceList.insert(4,5);
+//        sequenceList.insert(3,8);
 //        sequenceList.insert(0,9);
 
 //        System.out.println(  sequenceList.get(3));
 //        System.out.println(  sequenceList.getindex(2));
-//   sequenceList.remove(1);
-        System.out.println(  sequenceList.getindex(8));
+   sequenceList.remove(4);
+//        System.out.println(  sequenceList.getindex(8));
         sequenceList.listSeq();
     }
     private int length;
@@ -95,10 +95,13 @@ public class SequenceList implements SList {
             return;
         }
         if(i!=length-1){
-        for (int j = i; j <length; j++) {
+        for (int j = i; j <length-1; j++) {
             data[j]=data[j+1];
         }
+
         }
+
+        data[length-1]=null;
         length--;
     }
 
