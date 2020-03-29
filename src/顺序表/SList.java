@@ -7,7 +7,7 @@ package 顺序表;
  */
 public interface SList {
      void clear();
- void isEmpty();
+ Boolean isEmpty();
    void initSlist();
 
       Object get(int i);
