@@ -15,14 +15,14 @@ public class SingleList {
         singleList.add(3,3);
         singleList.add(4,5);
         singleList.add(5,8);
-        singleList.printList();
-        System.out.println(singleList.size);
-        singleList.remove(1);
-        System.out.println(singleList.size);
+//        singleList.printList();
+//        System.out.println(singleList.size);
+//        singleList.remove(1);
+//        System.out.println(singleList.size);
 //        System.out.println(singleList.getNode(10));
 //        System.out.println( singleList.getindex(0));
-        singleList.printList();
-
+//        singleList.printList();
+    singleList.createList_Head(4);
 
     }
 
@@ -39,8 +39,24 @@ public class SingleList {
 
     }
 
-    //头插法
-    
+    //头插法创建有n个元素的链表
+    public void createList_Head(int n){
+        Node node = new Node(0,null);
+        for(int i=1;i<n;++i){
+            Node p = new Node(i, null);
+            //将头结点后面的元素挂到新节点后面
+              p.next= node.next;
+              node.next=p;
+        }
+        StringBuilder sb = new StringBuilder("[");
+        while (node!=null){
+            sb.append(node.data+" , ");
+            node=node.next;
+        }
+        sb.append(" ]");
+        System.out.println(sb.toString());
+
+    }
     //尾插法
 
 

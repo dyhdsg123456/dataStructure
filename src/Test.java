@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -17,5 +18,6 @@ public class Test {
         Object o = objects.get(1);
         ArrayList<Object> objects1 = new ArrayList<>();
         System.out.println(16>>3);
+        HashMap<Object, Object> map = new HashMap<>();
     }
 }
