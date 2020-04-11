@@ -7,14 +7,14 @@ package 线性表.链表;
  */
 public class SingleList {
     public static void main(String[] args) {
-        Node node = new Node(2, null);
+//        Node node = new Node(2, null);
         SingleList singleList = new SingleList();
-        singleList.initSingleList();
-        singleList.add(1,1);
-        singleList.add(2,2);
-        singleList.add(3,3);
-        singleList.add(4,5);
-        singleList.add(5,8);
+//        singleList.initSingleList();
+//        singleList.add(1,1);
+//        singleList.add(2,2);
+//        singleList.add(3,3);
+//        singleList.add(4,5);
+//        singleList.add(5,8);
 //        singleList.printList();
 //        System.out.println(singleList.size);
 //        singleList.remove(1);
@@ -22,21 +22,57 @@ public class SingleList {
 //        System.out.println(singleList.getNode(10));
 //        System.out.println( singleList.getindex(0));
 //        singleList.printList();
-    singleList.createList_Head(4);
-
+//    singleList.createList_Head(4);
+        SingleList a = new SingleList();
+        a.initSingleList();
+        a.add(1,2);
+        a.add(2,4);
+        a.add(3,6);
+        SingleList b = new SingleList();
+        b.initSingleList();
+        b.add(1,1);
+        b.add(2,3);
+        b.add(3,5);
+        SingleList c = new SingleList();
+        c.initSingleList();
+        SingleList mergeList = a.MergeList(a, b, c);
+     mergeList.printList();
     }
 
     private  Node head;
     private int size;
     private static class Node{
-        Object data;
+        int data;
         Node next;
 
-        public Node(Object data, Node next) {
+        public Node(int data, Node next) {
             this.data = data;
             this.next = next;
         }
 
+    }
+    //将2个有序单链表合并为一个有序单链表
+    public SingleList MergeList(SingleList a,SingleList b,SingleList c){
+        Node nodec = c.head;
+        Node nodeA = a.head;
+        Node nodeB = b.head;
+        //遍历取小的,退出条件为一个链表取完了
+        while (nodeA!=null&&  nodeB!=null){
+            if(nodeA.data>=nodeB.data){
+                nodec.next=nodeB;
+                nodec=nodec.next;
+                nodeB=nodeB.next;
+            }else {
+                nodec.next=nodeA;
+                nodec=nodec.next;
+                nodeA=nodeA.next;
+            }
+
+            nodec.next=nodeA==null?nodeB:nodeA;
+        }
+
+
+        return c;
     }
 
     //头插法创建有n个元素的链表
@@ -65,7 +101,7 @@ public class SingleList {
         size++;
     }
     //根据值返回位置序号
-    public int getindex(Object e){
+    public int getindex(int e){
         Node p=head;
         int j=0;
         while(p!=null&&p.data!=e){
@@ -95,7 +131,7 @@ public class SingleList {
     }
 
     //按值查找
-    public Node  getNode(Object e){
+    public Node  getNode(int e){
         Node p=head;
         while (p!=null&&p.data!=e){
             p=p.next;
@@ -104,7 +140,7 @@ public class SingleList {
     }
 
     //在第index之前插入元素
-    public void add(int index,Object object){
+    public void add(int index,int object){
 
 
         if(index<1||index>size){
