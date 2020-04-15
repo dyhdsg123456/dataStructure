@@ -23,20 +23,21 @@ public class SingleList {
 //        System.out.println( singleList.getindex(0));
 //        singleList.printList();
 //    singleList.createList_Head(4);
-        SingleList a = new SingleList();
-        a.initSingleList();
-        a.add(1,2);
-        a.add(2,4);
-        a.add(3,6);
-        SingleList b = new SingleList();
-        b.initSingleList();
-        b.add(1,1);
-        b.add(2,3);
-        b.add(3,5);
-        SingleList c = new SingleList();
-        c.initSingleList();
-        SingleList mergeList = a.MergeList(a, b, c);
-     mergeList.printList();
+//        SingleList a = new SingleList();
+//        a.initSingleList();
+//        a.add(1,2);
+//        a.add(2,4);
+//        a.add(3,6);
+//        SingleList b = new SingleList();
+//        b.initSingleList();
+//        b.add(1,1);
+//        b.add(2,3);
+//        b.add(3,5);
+//        SingleList c = new SingleList();
+//        c.initSingleList();
+//        SingleList mergeList = a.MergeList(a, b, c);
+//     mergeList.printList();
+
     }
 
     private  Node head;
