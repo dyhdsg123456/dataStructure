@@ -19,6 +19,6 @@ public class 栈和队列 {
         ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(13);
         PriorityBlockingQueue priorityBlockingQueue = new PriorityBlockingQueue();
         DelayQueue delayQueue = new DelayQueue();
-        System.out.println(16>>>1);
+        System.out.println(16       >>>1);
     }
 }
