@@ -21,10 +21,10 @@ public class BinaryTree<T> {
         String[] data={"A","B","C","#","#","D","E","#","G","#","#","F","#","#","#"};
         create(data,tree1,0);
        InOrderTraverse(tree1);
-        int i = TreeDepth(tree1);
-        System.out.println(i);
-        BinaryTree<Integer> tree2 =  new BinaryTree<Integer>(1, right, null);
-        System.out.println(TreeDepth(tree2));
+        System.out.println(TreeDepth(tree1));
+//        BinaryTree<Integer> tree2 =  new BinaryTree<Integer>(1, right, null);
+//        System.out.println(TreeDepth(tree2));
+        System.out.println(TreeCount(tree1));
     }
     T data;
     BinaryTree<T>  left;
@@ -40,7 +40,7 @@ public class BinaryTree<T> {
     public static void InOrderTraverse(BinaryTree tree){
         if(tree!=null){
             //访问根节点
-            System.out.print(tree.data);
+            System.out.println(tree.data);
             //先序遍历左子树
             InOrderTraverse(tree.left);
             //先序遍历右子树
@@ -108,7 +108,17 @@ public class BinaryTree<T> {
         //计算左树深度
         //计算右树深度
         //取二者大的+1
-        return (tree==null)?0:1+Math.max(TreeDepth(tree.left),TreeDepth(tree.right));
+        return (tree.data==null)?0:1+Math.max(TreeDepth(tree.left),TreeDepth(tree.right));
+    }
+
+    public static int TreeCount(BinaryTree tree){
+
+        if(tree.data==null){
+            return 0;
+        }else {
+            return TreeCount(tree.right)+TreeCount(tree.left)+1;
+        }
+//        return (tree==null)?0:TreeCount(tree.right)+TreeCount(tree.left)+1;
     }
 
 }
