@@ -19,8 +19,12 @@ public class BinaryTree<T> {
 //        tree.InOrderTraverse4(tree);
         BinaryTree<Object> tree1 = new BinaryTree<>();
         String[] data={"A","B","C","#","#","D","E","#","G","#","#","F","#","#","#"};
-        tree1.create(data,tree1,0);
-        tree1.InOrderTraverse(tree1);
+        create(data,tree1,0);
+       InOrderTraverse(tree1);
+        int i = TreeDepth(tree1);
+        System.out.println(i);
+        BinaryTree<Integer> tree2 =  new BinaryTree<Integer>(1, right, null);
+        System.out.println(TreeDepth(tree2));
     }
     T data;
     BinaryTree<T>  left;
@@ -33,7 +37,7 @@ public class BinaryTree<T> {
         this.right = right;
     }
     //先序遍历
-    public void InOrderTraverse(BinaryTree tree){
+    public static void InOrderTraverse(BinaryTree tree){
         if(tree!=null){
             //访问根节点
             System.out.print(tree.data);
@@ -45,7 +49,7 @@ public class BinaryTree<T> {
     }
 
     //中序遍历
-    public void InOrderTraverse2(BinaryTree tree){
+    public static void InOrderTraverse2(BinaryTree tree){
         if(tree!=null){
              //中序遍历左子树
             InOrderTraverse2(tree.left);
@@ -58,7 +62,7 @@ public class BinaryTree<T> {
 
     //后续遍历
 
-    public void InOrderTraverse3(BinaryTree tree){
+    public static void InOrderTraverse3(BinaryTree tree){
         if(tree!=null){
             InOrderTraverse3(tree.left);
             InOrderTraverse3(tree.right);
@@ -66,7 +70,7 @@ public class BinaryTree<T> {
         }
     }
     //非递归中序遍历
-    public void InOrderTraverse4(BinaryTree tree){
+    public static void InOrderTraverse4(BinaryTree tree){
         Stack<BinaryTree> stack = new Stack<BinaryTree>();
         BinaryTree p=tree;
         while (p!=null||!stack.empty()){
@@ -82,12 +86,10 @@ public class BinaryTree<T> {
     }
 
     //先序遍历的顺序建立二叉树
-    public  int create(String[] treedats,BinaryTree tree,int n){
-
+    public static int create(String[] treedats,BinaryTree tree,int n){
         if("#".equals(treedats[n])){
             return n+1;
         }else {
-
             tree.data = treedats[n];
             tree.left=new BinaryTree<Integer>();
             int left = create(treedats, tree.left, n + 1);
@@ -95,7 +97,18 @@ public class BinaryTree<T> {
             int right = create(treedats, tree.right, left);
             return right;
         }
+    }
 
+    /**
+     * 计算二叉树深度
+     * @param tree
+     * @return
+     */
+    public static int TreeDepth(BinaryTree tree){
+        //计算左树深度
+        //计算右树深度
+        //取二者大的+1
+        return (tree==null)?0:1+Math.max(TreeDepth(tree.left),TreeDepth(tree.right));
     }
 
 }
