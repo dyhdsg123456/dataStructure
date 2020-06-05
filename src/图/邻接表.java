@@ -1,5 +1,9 @@
 package 图;
 
+import java.util.Queue;
+import java.util.Stack;
+import java.util.concurrent.ArrayBlockingQueue;
+
 /**
  * Auther: dyh
  * Date: 2020/5/24 11:30
@@ -25,7 +29,9 @@ public class 邻接表 {
         };
 
         LinkGraph graph=new LinkGraph(vexs,edges);
-        System.out.println(graph);
+        graph.dfs();
+        graph.BFS();
+//        System.out.println(graph);
     }
     //作为某个点的邻接点的顶点信息
    static class Node{
@@ -108,8 +114,81 @@ public class 邻接表 {
                 tmp.nextNode=node;
             }
         }
-    }
 
+        //深度优先搜索
+        public void dfs(){
+            boolean[] visited=new boolean[vertex.length];  //默认为false;
+            int[] path=new int[vertex.length];  //记录遍历的顶点序号
+            int index=0;//path[]的索引
+            Stack<Integer> stack = new Stack<>();
+            visited[0]=true;
+            stack.push(0);
+            path[index++]=0;
+            while(!stack.isEmpty()) {
+                int v=getUnVisitedAdjVertex(stack.peek(),visited);
+                //如果不存在没有访问的邻接点，就出栈，原路返回
+                if(v==-1) {
+                    stack.pop();
+                }
+                //否则，存在还没有访问过的邻接点，入栈，并标注已访问
+                else {
+                    path[index++]=v;  //访问邻接点
+                    visited[v]=true;  //标志已访问
+                    stack.push(v);    //入栈
+                }
+            }
+
+            //打印DFS路径
+            System.out.println("DFS路径:");
+            for(int i=0;i<path.length;i++) {
+                System.out.print(vertex[path[i]].data+" ");
+            }
+        }
+        //查找某个点的还没有被访问的邻接点的序号
+        public int getUnVisitedAdjVertex(int v,boolean[] visited) {
+            Node tmp=vertex[v].firstEdge;
+            //如果存在邻接点
+            while(tmp!=null) {
+                //并且邻接点还没有访问过，就返回该邻接点的序号
+                if(visited[tmp.index]==false) {
+                    return tmp.index;
+                }
+                tmp=tmp.nextNode;
+            }
+            //不存在没有被访问的邻接点
+            return -1;
+        }
+        //广度优先搜索，从第一个顶点开始遍历
+        public void BFS() {
+            boolean[] visited=new boolean[vertex.length];  //默认为false;
+            int[] path=new int[vertex.length];  //记录遍历的顶点序号
+            int index=0;  //path[]的索引
+            ArrayBlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(100);
+            visited[0]=true;
+            queue.add(0);
+            path[index++]=0;
+            while(!queue.isEmpty()) {
+                int v=getUnVisitedAdjVertex(queue.peek(), visited);
+                //如果不存在没有访问的邻接点，就出队
+                if(v==-1) {
+                    queue.remove();
+                }
+                //否则，存在还没有访问过的邻接点，入队，并标注已访问
+                else {
+                    path[index++]=v;  //访问邻接点
+                    visited[v]=true;  //标志已访问
+                    queue.add(v);     //入队
+                }
+            }
+
+            //打印BFS路径
+            System.out.println("BFS路径:");
+            for(int i=0;i<path.length;i++) {
+                System.out.print(vertex[path[i]].data+" ");
+            }
+        }
+
+    }
 
 
 
