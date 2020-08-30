@@ -1,5 +1,7 @@
 package 栈;
 
+import java.util.HashMap;
+
 /**
  * Auther: dyh
  * Date: 2020/8/30 09:07
@@ -27,6 +29,7 @@ public class 反转字符串中的单词3 {
         String s = "Let's take LeetCode contest";
         String s1 = reverseWords2(s);
         System.out.println(s1);
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
     }
 
 
