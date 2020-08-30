@@ -25,6 +25,8 @@ public class Test {
         System.out.println(objects);
         System.out.println(22/3);
         System.out.println(22%3);
+        int step=44;
+        System.out.println(step /= 2);
 
     }
 }
