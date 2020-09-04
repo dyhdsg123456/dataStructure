@@ -29,7 +29,9 @@ public class 反转字符串中的单词3 {
     public static void main(String[] args) {
         Stack<String> strings = new Stack<>();
         strings.push("a");
-        String pop = strings.pop();
+        strings.push("b");
+        System.out.println(strings.peek());
+        System.out.println(strings.peek());
         String peek = strings.peek();
         char a='a';
         System.out.println(peek.equals(a+""));
