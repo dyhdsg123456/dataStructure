@@ -2,6 +2,7 @@ package 栈;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * Auther: dyh
@@ -11,10 +12,12 @@ import java.util.LinkedList;
 public class 化栈为队 {
 
     class MyQueue {
+
         Deque<Integer> stack1;
         Deque<Integer> stack2;;
         /** Initialize your data structure here. */
         public MyQueue() {
+
             stack1=new LinkedList<>();
             stack2=new LinkedList<>();
         }
